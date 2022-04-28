@@ -7,7 +7,7 @@ const Navbar = () => {
     <img src="src/assets/img/logos-coderhouse-01.png" width="20%" class="d-inline-block align-top" alt="Logo"></img>
     {/* Logo text */}
   </a>
-      <button
+      <button 
         className="navbar-toggler"
         type="button"
         data-toggle="collapse"
