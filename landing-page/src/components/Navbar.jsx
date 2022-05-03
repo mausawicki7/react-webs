@@ -1,13 +1,18 @@
 import React from "react";
+import CartWidget from "./CartWidget";
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    <img src="src/assets/img/logos-coderhouse-01.png" width="20%" class="d-inline-block align-top" alt="Logo"></img>
-    {/* Logo text */}
-  </a>
-      <button 
+      <a className="navbar-brand" href="#">
+        <img
+          src="src/assets/img/logos-coderhouse-01.png"
+          width="20%"
+          className="d-inline-block align-top"
+          alt="Logo"
+        ></img>
+      </a>
+      <button
         className="navbar-toggler"
         type="button"
         data-toggle="collapse"
@@ -61,6 +66,12 @@ const Navbar = () => {
                 Link 3
               </a>
             </div>
+          </li>
+
+          <li className="nav-item">
+            <a className="nav-link">
+            <CartWidget />
+            </a>
           </li>
         </ul>
       </div>

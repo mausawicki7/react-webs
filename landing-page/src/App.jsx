@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import logo from './assets/img/pug.png'
 import './App.css'
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from './navigation/Navbar'
+import Navbar from './components/Navbar'
+import ItemListContainer from './components/ItemListContainer';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,8 +11,8 @@ function App() {
     
     <div className="App">
       <div><Navbar /></div>
+      <ItemListContainer greeting={"Hola!, esta es la prop greeting"}/>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
        
        <br></br> 
         
