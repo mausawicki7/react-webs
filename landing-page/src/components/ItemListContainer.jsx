@@ -13,6 +13,7 @@ const products = [
   { id: 8, name: "Producto 8", price: 800, stock: 80 },
 ];
 
+/* A promise that will always resolve after 2 seconds. In next lessons, this will be connect to an API */
 const getFetch = new Promise((resolve) => {
   setTimeout(() => {
     resolve(products);
@@ -23,7 +24,9 @@ function ItemListContainer() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
+
   useEffect(() => {
+    // Fetch data from "API" xD and set it to items state variable when component is mounted.
     getFetch.then((data) => {
       setItems(data);
       setLoading(false);
