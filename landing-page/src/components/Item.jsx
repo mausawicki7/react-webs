@@ -1,7 +1,8 @@
 import ItemCount from "./ItemCount";
+import {Link} from "react-router-dom";
 import "../styles/Item.css";
 
-function Item({category, name, price, stock, initial, onAdd, onRemove}) {
+function Item({id, name, price, stock, initial, onAdd, onRemove}) {
     return (
         <div className="item">
             <div className="item-image">
@@ -14,6 +15,7 @@ function Item({category, name, price, stock, initial, onAdd, onRemove}) {
                     <span> - </span>
                     <span>{stock} en stock</span>
                 </p>
+                <Link to={`/${id}`}>Detalle del producto</Link>
                 <ItemCount stock={10} initial={1} onAdd={onAdd} onRemove={onRemove} />
             </div>
         </div>
