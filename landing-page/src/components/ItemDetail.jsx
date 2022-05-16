@@ -1,17 +1,19 @@
 import {Link} from 'react-router-dom';
+import "../styles/Item.css";
 
-function ItemDetail({id, name, price, stock, initial, onAdd, onRemove}) {
+function ItemDetail({item}) {
     return (
       <div className="row" >
          <div className="item-image">
-                <img src={`src/assets/img/thumbnail.png`} alt={name} />
+                <img src={`src/assets/img/thumbnail.png`} alt={item.name} />
             </div>
             <div className="item-info">
-                <h2>{name}</h2>
+                <h2>{item.name}</h2>
                 <p>
-                    <span>${price}</span>
+                    <span>${item.price}</span>
                     <span> - </span>
-                    <span>{stock} en stock</span>
+                    <span>{item.stock} en stock</span><br/>
+                    <span className='item-description'>{item.description}</span>
                 </p>
                 <Link to="/">Volver al inicio</Link>
                 </div>

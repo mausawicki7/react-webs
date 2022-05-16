@@ -15,7 +15,9 @@ function Item({id, name, price, stock, initial, onAdd, onRemove}) {
                     <span> - </span>
                     <span>{stock} en stock</span>
                 </p>
+                
                 <Link to={`/${id}`}>Detalle del producto</Link>
+                <br/><br/>
                 <ItemCount stock={10} initial={1} onAdd={onAdd} onRemove={onRemove} />
             </div>
         </div>

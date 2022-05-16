@@ -1,17 +1,20 @@
 import React from "react";
 import CartWidget from "./CartWidget";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="#">
+      <Link to = "/"><a className="navbar-brand">
         <img
           src="src/assets/img/logos-coderhouse-01.png"
           width="20%"
           className="d-inline-block align-top"
           alt="Logo"
         ></img>
+        
       </a>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"

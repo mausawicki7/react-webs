@@ -26,9 +26,10 @@ function ItemListContainer() {
 
   return (
     <>
-      <div className="item-list-container"></div>
+      <div className="item-list-container">
       {loading ? <div><div className="lds-ring"><div></div></div><br></br>Cargando..</div> 
       : <ItemList items={items} />}
+      </div>
     </>
   );
 }
