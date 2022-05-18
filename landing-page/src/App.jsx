@@ -14,6 +14,7 @@ function App() {
         <header className="App-header">
         <Routes>
         <Route path="/" element={<ItemListContainer />} />
+        <Route path="/category/:id" element={<ItemListContainer />} />
         <Route path="/:id" element={<ItemDetailContainer />} />
         <Route path="/*" element={<Navigate to="/" replace/>} />
         </Routes>

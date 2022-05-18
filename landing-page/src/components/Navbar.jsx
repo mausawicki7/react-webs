@@ -1,80 +1,67 @@
 import React from "react";
 import CartWidget from "./CartWidget";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import "../styles/Logo.css";
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link to = "/"><a className="navbar-brand">
-        <img
-          src="src/assets/img/logos-coderhouse-01.png"
-          width="20%"
-          className="d-inline-block align-top"
-          alt="Logo"
-        ></img>
-        
-      </a>
+      <Link to="/">
+        <div className="navbar-brand">
+          <img
+            src="src/assets/img/logos-coderhouse-01.png"
+            width="20%"
+            className="d-inline-block align-top logo-img"
+            alt="Logo"
+          ></img>
+        </div>
       </Link>
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
+
 
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
           <li className="nav-item active">
-            <a className="nav-link" href="#">
+            <NavLink className="nav-link" to="/">
               Home <span className="sr-only">(current)</span>
-            </a>
+            </NavLink>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Servicios
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Planes
-            </a>
-          </li>
+
           <li className="nav-item dropdown">
-            <a
+            <div
               className="nav-link dropdown-toggle"
-              href="#"
               id="navbarDropdownMenuLink"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Opciones
-            </a>
+              Categorías
+            </div>
             <div
               className="dropdown-menu"
               aria-labelledby="navbarDropdownMenuLink"
             >
-              <a className="dropdown-item" href="#">
-                Link 1
-              </a>
-              <a className="dropdown-item" href="#">
-                Link 2
-              </a>
-              <a className="dropdown-item" href="#">
-                Link 3
-              </a>
+              <div className="dropdown-item">
+                <NavLink className="nav-link" to="/category/1">
+                  Categoria 1
+                </NavLink>
+              </div>
+              <div className="dropdown-item">
+              <NavLink className="nav-link" to="/category/2">
+                Categoria 2
+              </NavLink>
+              </div>
+              <div className="dropdown-item">
+              <NavLink className="nav-link" to="/category/3">
+                Categoria 3
+              </NavLink>
+              </div>
             </div>
           </li>
 
           <li className="nav-item">
-            <a className="nav-link">
-            <CartWidget />
-            </a>
+            <div className="nav-link">
+              <CartWidget />
+            </div>
           </li>
         </ul>
       </div>

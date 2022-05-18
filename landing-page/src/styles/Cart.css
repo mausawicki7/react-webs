@@ -1,0 +1,8 @@
+.cart-icon {
+	width: min(3vw, 50px);
+    float: right ;
+    display: block;
+    position: absolute;
+    right: 20px ;
+    bottom: 25px;
+}

@@ -2,6 +2,7 @@ const products = [
   {
     id: 1,
     name: "Producto 1",
+    category: "categoria1",
     price: 100,
     stock: 10,
     description:
@@ -9,6 +10,7 @@ const products = [
   },
   { id: 2,
     name: "Producto 2",
+    category: "categoria2",
     price: 200,
     stock: 20,
     description:
@@ -16,6 +18,7 @@ const products = [
   },
   { id: 3,
     name: "Producto 3",
+    category: "categoria3",
     price: 300,
     stock: 30,
     description:
@@ -23,6 +26,7 @@ const products = [
   },
   { id: 4,
     name: "Producto 4",
+    category: "categoria1",
     price: 400,
     stock: 40,
     description:
@@ -30,6 +34,7 @@ const products = [
   },
   { id: 5,
     name: "Producto 5",
+    category: "categoria2",
     price: 500,
     stock: 50,
     description:
@@ -37,6 +42,7 @@ const products = [
   },
   { id: 6,
     name: "Producto 6",
+    category: "categoria3",
     price: 600,
     stock: 60,
     description:
@@ -44,6 +50,7 @@ const products = [
   },
   { id: 7,
     name: "Producto 7",
+    category: "categoria1",
     price: 700,
     stock: 70,
     description:
@@ -51,6 +58,7 @@ const products = [
   },
   { id: 8,
     name: "Producto 8",
+    category: "categoria2",
     price: 800,
     stock: 80,
     description:

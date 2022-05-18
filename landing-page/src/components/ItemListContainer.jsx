@@ -8,11 +8,11 @@ function ItemListContainer() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const {id} = useParams();
-
+  console.log(id)
   useEffect(() => {
     if (id) {
       getFetch()  
-      .then(res=> setItems(res.filter(item => item.category === id)))
+      .then(res=> setItems(res.filter(item => item.category == id )))
       .catch((err)=> console.log(err))
       .finally(()=>setLoading(false))                             
   } else {
@@ -26,7 +26,7 @@ function ItemListContainer() {
 
   return (
     <>
-      <div className="item-list-container">
+      <div className="item-list-grid">
       {loading ? <div><div className="lds-ring"><div></div></div><br></br>Cargando..</div> 
       : <ItemList items={items} />}
       </div>
