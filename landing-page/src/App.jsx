@@ -8,37 +8,36 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      
       <BrowserRouter>
-      <Navbar />
-        <header className="App-header">
-        <Routes>
-        <Route path="/" element={<ItemListContainer />} />
-        <Route path="/category/:id" element={<ItemListContainer />} />
-        <Route path="/:id" element={<ItemDetailContainer />} />
-        <Route path="/*" element={<Navigate to="/" replace/>} />
-        </Routes>
-          <p>
-            <br></br>
-            <a
-              className="App-link"
-              href="https://linkedin.com/in/mausa10"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-            {" | "}
-            <a
-              className="App-link"
-              href="https://wonderweb.com.ar/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Portfolio
-            </a>
-          </p>
-        </header>
+        <Navbar />
+          <header className="App-header">
+          <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/category/:id" element={<ItemListContainer />} />
+          <Route path="/:id" element={<ItemDetailContainer />} />
+          <Route path="/*" element={<Navigate to="/" replace/>} />
+          </Routes>
+            <p>
+              <br></br>
+              <a
+                className="App-link"
+                href="https://linkedin.com/in/mausa10"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+              {" | "}
+              <a
+                className="App-link"
+                href="https://wonderweb.com.ar/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Portfolio
+              </a>
+            </p>
+          </header>
       </BrowserRouter>
     </div>
   );

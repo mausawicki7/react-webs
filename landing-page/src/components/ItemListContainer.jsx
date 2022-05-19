@@ -22,7 +22,7 @@ function ItemListContainer() {
       .finally(()=>setLoading(false))                 
   }
 
-  }, []);
+  }, [id]);
 
   return (
     <>

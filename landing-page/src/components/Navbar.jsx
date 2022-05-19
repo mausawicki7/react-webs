@@ -16,7 +16,17 @@ const Navbar = () => {
           ></img>
         </div>
       </Link>
-
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
 
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
@@ -41,17 +51,17 @@ const Navbar = () => {
               aria-labelledby="navbarDropdownMenuLink"
             >
               <div className="dropdown-item">
-                <NavLink className="nav-link" to="/category/1">
+                <NavLink className="nav-link" to="/category/categoria1">
                   Categoria 1
                 </NavLink>
               </div>
               <div className="dropdown-item">
-              <NavLink className="nav-link" to="/category/2">
+              <NavLink className="nav-link" to="/category/categoria2">
                 Categoria 2
               </NavLink>
               </div>
               <div className="dropdown-item">
-              <NavLink className="nav-link" to="/category/3">
+              <NavLink className="nav-link" to="/category/categoria3">
                 Categoria 3
               </NavLink>
               </div>

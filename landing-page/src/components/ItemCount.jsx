@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "../styles/Button.css";
 import "../styles/ItemList.css";
 
@@ -18,13 +18,10 @@ function ItemCount({ stock, initial, onAdd }) {
     }
   };
 
-  function addToCart() {
-    console.log(`${count} productos añadidos al carrito.`);
-    console.log("A continuación se ejecutaría función onAdd.");
-    //onAdd(count);
-    discountFromStock(count);
-    console.log(count)
-  }
+  // const {addToCart, cartList} = useContext(cartContext);
+  // const onAdd = (count) => {
+  //   addToCart(item, count);
+  // };
 
   function discountFromStock(count) {
     if (stock > 0) {
@@ -45,7 +42,7 @@ function ItemCount({ stock, initial, onAdd }) {
           +
         </button>
         <br/><br/>
-        <button className="btn" onClick={addToCart}>
+        <button className="btn" onClick={onAdd}>
           {" "}
           Agregar al carrito{" "}
         </button>
