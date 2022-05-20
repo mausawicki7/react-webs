@@ -1,10 +1,16 @@
+import React, { useContext } from "react";
 import ItemCount from "./ItemCount";
 import {NavLink, Link} from "react-router-dom";
+import { CartContext } from "../context/CartContext";
 import "../styles/Item.css";
 import "../styles/ItemList.css";
 
 
-function Item({id, name, price, stock, initial, onAdd, onRemove}) {
+function Item({id, name, price, stock, img, qty}) {
+    const cartContext = useContext(CartContext);
+    const addToCart = cartContext.addToCart; // Getting the addToCart function from the CartContext.
+    const item = {id, name, price, stock, img, qty};
+
     return (
         <>
         <div className="my-card">
@@ -23,7 +29,7 @@ function Item({id, name, price, stock, initial, onAdd, onRemove}) {
                 
                 <NavLink className="nav-link" to={`/${id}`}>Ver detalle</NavLink>
                 <br/>
-                <ItemCount stock={10} initial={1} onAdd={onAdd} onRemove={onRemove} />
+                <ItemCount item={item} onAdd={addToCart} />
             </div>
         </div>
         </>
