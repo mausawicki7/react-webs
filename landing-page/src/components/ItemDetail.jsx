@@ -1,8 +1,20 @@
 import "../styles/ItemDetail.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../context/CartContext";
+import ItemCount from "./ItemCount";
 
 function ItemDetail({ item }) {
   const [count, setCount] = useState(true);
+  const cartContext = useContext(CartContext);
+  const { cartList } = cartContext;
+
+  const onAdd = (item, qty) => {
+    cartContext.addToCart(item, qty);
+  };
+
+  console.log(cartList);
+
+
   return (
 
     <div className="row">
@@ -34,7 +46,7 @@ function ItemDetail({ item }) {
 
             <div className="price-and-buy-btn">
               <h2 className="price-1">${item.price}</h2>
-              <button className="buy-btn">COMPRAR</button>
+              <button className="buy-btn">Añadir al carrito</button>
             </div>
           </div>
         </div>
