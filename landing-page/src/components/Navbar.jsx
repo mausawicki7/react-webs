@@ -70,7 +70,7 @@ const Navbar = () => {
 
           <li className="nav-item">
             <div className="nav-link">
-              <CartWidget />
+              <CartWidget />  
             </div>
           </li>
         </ul>

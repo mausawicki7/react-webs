@@ -1,6 +1,7 @@
 import "../styles/ItemDetail.css";
 import { useState, useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import BuyButtons from "./BuyButtons";
 import ItemCount from "./ItemCount";
 
 function ItemDetail({ item }) {
@@ -12,11 +13,14 @@ function ItemDetail({ item }) {
     cartContext.addToCart(item, qty);
   };
 
+  const handleRenderCount = () => {
+    setCount(false);
+    }
+
+
   console.log(cartList);
 
-
   return (
-
     <div className="row">
       <div className="container">
         <div className="card-container">
@@ -39,15 +43,15 @@ function ItemDetail({ item }) {
               <h2>{item.name}</h2>
               <h4>{item.stock} en stock</h4>
             </div>
-
-            <p className="paragraph-area">
-            {item.description}
-            </p>
-
-            <div className="price-and-buy-btn">
               <h2 className="price-1">${item.price}</h2>
-              <button className="buy-btn">Añadir al carrito</button>
-            </div>
+
+            <p className="paragraph-area">{item.description}</p>
+            
+            {count ?
+            <ItemCount item={item} onAdd={onAdd} handleRenderCount={handleRenderCount} /> : 
+            <BuyButtons/>}
+
+
           </div>
         </div>
       </div>

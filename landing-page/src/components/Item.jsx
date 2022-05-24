@@ -6,17 +6,17 @@ import "../styles/Item.css";
 import "../styles/ItemList.css";
 
 
-function Item({id, name, price, stock, img, qty}) {
+function Item({id, name, price, stock, image, qty}) {
     const cartContext = useContext(CartContext);
     const addToCart = cartContext.addToCart; // Getting the addToCart function from the CartContext.
-    const item = {id, name, price, stock, img, qty};
+    const item = {id, name, price, stock, image, qty};
 
     return (
         <>
         <div className="my-card">
             <Link to={`/${id}`}>
             <div className="img-place">
-                <img id="card-img" src={`src/assets/img/thumbnail.png`} alt={name} />
+                <img id="card-img" src={image} alt={name} />
             </div>
             </Link>
             <div className="item-info">

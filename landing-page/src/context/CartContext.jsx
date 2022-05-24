@@ -9,8 +9,8 @@ const CartProvider = (props) => {
 /**
  * AddToCart() takes two arguments, item and qty, and adds them to the cartList array.
  */
-  function addToCart(item, qty) {
-    const newItem = [...item, qty];
+  const addToCart = (item, qty) => {
+    const newItem = {...item, qty};
     setCartList([...cartList, newItem]);
   }
 
@@ -25,6 +25,7 @@ const CartProvider = (props) => {
   
   return (
 
+/* Passing the state (cartList) and functions to the CartContext.Provider. */
     <CartContext.Provider value={{ 
         cartList,
         addToCart,

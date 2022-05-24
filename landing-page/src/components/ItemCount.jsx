@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/Button.css";
 import "../styles/ItemList.css";
 
-function ItemCount({ item, onAdd }) {
+function ItemCount({ item, onAdd, handleRenderCount }) {
   const [count, setCount] = useState(1);
 
   if (count > item.stock) {
@@ -12,18 +12,16 @@ function ItemCount({ item, onAdd }) {
   const handleAdd = () => {
     setCount(count + 1);
   };
+
   const handleRemove = () => {
     if (count > 0) {
       setCount(count - 1);
     }
   };
 
-  function discountFromStock(count) {
-    if (item.stock > 0) {
-      setCount(item.stock - count);
-    } else {
-      console.log("No hay stock disponible");
-    }
+  function addToCart() {
+    onAdd(item, count);
+    handleRenderCount();
   }
 
   return (
@@ -37,7 +35,7 @@ function ItemCount({ item, onAdd }) {
           +
         </button>
         <br/><br/>
-        <button className="btn" onClick={()=>onAdd(item, item.qty)}>
+        <button className="btn" onClick={addToCart}>
           {" "}
           Agregar al carrito{" "}
         </button>
