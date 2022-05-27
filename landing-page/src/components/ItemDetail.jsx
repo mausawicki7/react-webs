@@ -50,8 +50,6 @@ function ItemDetail({ item }) {
             {count ?
             <ItemCount item={item} onAdd={onAdd} handleRenderCount={handleRenderCount} /> : 
             <BuyButtons/>}
-
-
           </div>
         </div>
       </div>

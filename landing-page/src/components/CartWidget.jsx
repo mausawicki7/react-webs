@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import "../styles/Cart.css"
 
 function CartWidget() {
-  const cartContext = useContext(CartContext);
-  const { cartList } = cartContext;
+  const { cartList }= useContext(CartContext);
   return (
     <>
     <Link to="/cart"><span className="material-symbols-outlined cart-icon">shopping_bag</span></Link>
