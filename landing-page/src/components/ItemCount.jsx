@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../styles/Button.css";
 import "../styles/ItemList.css";
 
-function ItemCount({ item, onAdd, handleRenderCount }) {
+function ItemCount({ item, stock, onAdd }) {
   const [count, setCount] = useState(1);
 
   if (count > item.stock) {
@@ -19,9 +19,8 @@ function ItemCount({ item, onAdd, handleRenderCount }) {
     }
   };
 
-  function addToCart() {
+  function addItem() {
     onAdd(item, count);
-    handleRenderCount();
   }
 
   return (
@@ -35,7 +34,7 @@ function ItemCount({ item, onAdd, handleRenderCount }) {
           +
         </button>
         <br/><br/>
-        <button className="btn" onClick={addToCart}>
+        <button className="btn" onClick={addItem}>
           {" "}
           Agregar al carrito{" "}
         </button>

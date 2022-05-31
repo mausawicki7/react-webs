@@ -29,7 +29,7 @@ function Item({id, name, price, stock, image, qty}) {
                 
                 <NavLink className="nav-link" to={`/${id}`}>Ver detalle</NavLink>
                 <br/>
-                <ItemCount item={item} onAdd={addToCart} />
+                <ItemCount item={item} stock={stock} onAdd={addToCart} />
             </div>
         </div>
         </>

@@ -5,20 +5,13 @@ import BuyButtons from "./BuyButtons";
 import ItemCount from "./ItemCount";
 
 function ItemDetail({ item }) {
-  const [count, setCount] = useState(true);
+  const [inputType, setInputType] = useState('itemCount');
   const cartContext = useContext(CartContext);
-  const { cartList } = cartContext;
 
-  const onAdd = (item, qty) => {
-    cartContext.addToCart(item, qty);
+  const onAdd = (qty) => {
+    cartContext.addToCart(...item, qty);
+    setInputType('buyButtons');
   };
-
-  const handleRenderCount = () => {
-    setCount(false);
-    }
-
-
-  console.log(cartList);
 
   return (
     <div className="row">
@@ -47,8 +40,8 @@ function ItemDetail({ item }) {
 
             <p className="paragraph-area">{item.description}</p>
             
-            {count ?
-            <ItemCount item={item} onAdd={onAdd} handleRenderCount={handleRenderCount} /> : 
+            {inputType === 'itemCount' ?
+            <ItemCount item={item} onAdd={onAdd} /> : 
             <BuyButtons/>}
           </div>
         </div>
