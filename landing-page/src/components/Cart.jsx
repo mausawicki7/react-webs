@@ -1,12 +1,11 @@
 //Chequear este codigo..
-import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import { UseCartContext } from "../context/CartContext";
 import "../styles/Cart.css";
 import "../styles/Item.css";
 import CartItem from "./CartItem";
 
 const Cart = () => {
-  const { cartList, removeFromCart, totalPrice, totalItems } = useContext(CartContext);
+  const { cartList, clearCart, totalPrice, totalItems } = UseCartContext();
 
   console.log("items totales: " + totalItems);
   if(!totalItems){
@@ -29,7 +28,7 @@ const Cart = () => {
         ))}
       </div>
       <div className="cart-total">
-        <p>Total: ${totalPrice}</p>
+        <p>{`Total: ${totalPrice}`}</p>
       </div>
     </>
   );

@@ -1,9 +1,14 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
+import swal from "sweetalert";
 
-export const CartContext = createContext([]);
+const CartContext = createContext([]);
+
+export function UseCartContext() {
+  return useContext(CartContext)
+}
 
 //Estados y funciones globales para el carrito
-const CartProvider = (props) => {
+export default function CartContextProvider ({children}) {
   const [cartList, setCartList] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
@@ -13,17 +18,26 @@ const CartProvider = (props) => {
    * cartList array.
    * @returns The function isInCart is returning a boolean value.
    */
-  const isInCart = (item) => {
-    return cartList.some((cartItem) => cartItem.id === item.id);
+  const isInCart = (id) => {
+    return cartList.some((cartItem) => cartItem.id === id);
   };
 
-  const addToCart = (item, qty) => {
-    if (isInCart(item)) {
+  const addToCart = (item) => {
+    if (isInCart(item.id)) {
+
+      swal({
+        title: "Ya agregaste este producto",
+        text: "El producto ya se encuentra en tu carrito",
+        icon: "warning",
+        button: "OK",
+      });
       let i = cartList.findIndex((cartItem) => cartItem.id === item.id);
-      cartList[i].qty += qty;
-      setCartList([...cartList]);
+      const newCartList = cartList;
+      newCartList[i].quantity += item.quantity;
+      updateCart(newCartList);
+
     } else {
-      setCartList([...cartList, { ...item, qty }]);
+      updateCart([...cartList, item]);
     }
   };
 
@@ -32,42 +46,30 @@ const CartProvider = (props) => {
    * with the same properties as the cartItem, but with the qty property set to the current qty plus the
    * qty passed in.
    */
-  const updateCart = (item, qty) => {
-    setCartList(
-      cartList.map((cartItem) => {
-        if (cartItem.id === item.id) {
-          return { ...cartItem, qty: cartItem.qty + qty };
-        }
-        return cartItem;
-      })
-    );
+  const updateCart = (arr) => {
+    setCartList(arr);
     setTotalPrice(
-      cartList.map((cartItem) => {
-        if (cartItem.id === item.id) {
-          return cartItem.qty * cartItem.price;
-        }
-        return cartItem;
-      })
+      arr.map((item) => item.price * item.quantity).reduce((a, b) => a + b, 0)
     );
-    setTotalItems(
-      cartList.map((cartItem) => {
-        if (cartItem.id === item.id) {
-          return cartItem.qty;
-        }
-        return cartItem;
-      })
-    );
+
+    setTotalItems(arr.map((item) => item.quantity).reduce((a, b) => a + b, 0));
     console.log("Total items: " + totalItems);
     console.log("Total price: " + totalPrice);
+  };
+
+  const clearCart = () => {
+    updateCart([]);
   };
 
   /**
    * Remove the item from the cartList array if the item's id does not match the id of the item passed
    * into the function.
    */
-  const removeFromCart = (item) => {
-    const newCartList = cartList.filter((cartItem) => cartItem.id !== item.id);
-    setCartList(newCartList);
+  const removeFromCart = (id) => {
+    let i = cartList.findIndex(item => item.id === id);
+    const newCartList = cartList;
+    newCartList.splice(i,1);
+    updateCart(newCartList);
   };
 
   return (
@@ -76,15 +78,15 @@ const CartProvider = (props) => {
       value={{
         cartList,
         addToCart,
+        clearCart,
         removeFromCart,
         updateCart,
         totalPrice,
-        totalItems,
+        totalItems
       }}
     >
-      {props.children}
+      {children}
     </CartContext.Provider>
   );
 };
 
-export default CartProvider;

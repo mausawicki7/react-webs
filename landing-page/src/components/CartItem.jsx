@@ -1,8 +1,8 @@
-import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import { UseCartContext } from "../context/CartContext";
+
 
 const CartItem = () => {
-  const { cartList, removeFromCart, totalPrice } = useContext(CartContext);
+  const { cartList, removeFromCart, totalPrice } = UseCartContext();
   return (
     <>
       <div className="cart-list">
@@ -13,9 +13,10 @@ const CartItem = () => {
             </div>
             <div className="cart-item-info">
               <h3>{item.name}</h3>
-              <div>{item.description}</div>
+              <div className="paragraph-area">{item.description}</div>
               <div>${item.price}</div>
-              <p>Cantidad: {item.qty}</p>
+              <p>Cantidad: {item.quantity}</p>
+              <p>{`Total: $${totalPrice}`}</p>
             </div>
             <div className="cart-item-remove">
               <button className="btn-danger btn-sm mb-3">
@@ -26,7 +27,7 @@ const CartItem = () => {
                   delete
                 </span>
               </button>
-              <p>{`Total: ${totalPrice}`}</p>
+              
             </div>
           </div>
         ))}

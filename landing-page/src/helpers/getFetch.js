@@ -79,6 +79,6 @@ export const getFetch = (id) => {
     setTimeout(() => {
       const query = id ? products.find((item) => item.id == id) : products;
       resolve(query);
-    }, 2000);
+    }, 1000);
   });
 };

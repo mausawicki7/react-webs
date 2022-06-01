@@ -1,39 +1,34 @@
-import React, { useContext } from "react";
-import ItemCount from "./ItemCount";
-import {NavLink, Link} from "react-router-dom";
-import { CartContext } from "../context/CartContext";
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
 import "../styles/Item.css";
 import "../styles/ItemList.css";
 
+function Item({ item }) {
+  return (
+    <>
+      <div className="my-card">
+        <Link to={`/${item.id}`}>
+          <div className="img-place">
+            <img id="card-img" src={item.image} alt={item.name} />
+          </div>
+        </Link>
+        <div className="item-info">
+          <h2>{item.name}</h2>
+          <p>
+            <span>${item.price}</span>
+            <span> - </span>
+            <span>{item.stock} en stock</span>
+          </p>
 
-function Item({id, name, price, stock, image, qty}) {
-    const cartContext = useContext(CartContext);
-    const addToCart = cartContext.addToCart; // Getting the addToCart function from the CartContext.
-    const item = {id, name, price, stock, image, qty};
-
-    return (
-        <>
-        <div className="my-card">
-            <Link to={`/${id}`}>
-            <div className="img-place">
-                <img id="card-img" src={image} alt={name} />
-            </div>
-            </Link>
-            <div className="item-info">
-                <h2>{name}</h2>
-                <p>
-                    <span>${price}</span>
-                    <span> - </span>
-                    <span>{stock} en stock</span>
-                </p>
-                
-                <NavLink className="nav-link" to={`/${id}`}>Ver detalle</NavLink>
-                <br/>
-                <ItemCount item={item} stock={stock} onAdd={addToCart} />
-            </div>
+          <NavLink className="btn" to={`/${item.id}`}>
+            Agregar al pedido
+          </NavLink>
+          <br />
+          <br />
         </div>
-        </>
-    );
+      </div>
+    </>
+  );
 }
 
 export default Item;

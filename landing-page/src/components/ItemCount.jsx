@@ -2,25 +2,23 @@ import React, { useState } from "react";
 import "../styles/Button.css";
 import "../styles/ItemList.css";
 
-function ItemCount({ item, stock, onAdd }) {
-  const [count, setCount] = useState(1);
-
-  if (count > item.stock) {
-    setCount(item.stock);
-  }
+function ItemCount({ initial, stock, onAdd }) {
+  const [quantity, setQuantity] = useState(initial);
 
   const handleAdd = () => {
-    setCount(count + 1);
+    if(quantity < stock) {
+      setQuantity(quantity + 1);
+  };
   };
 
   const handleRemove = () => {
-    if (count > 0) {
-      setCount(count - 1);
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
     }
   };
 
   function addItem() {
-    onAdd(item, count);
+    onAdd(quantity);
   }
 
   return (
@@ -29,14 +27,13 @@ function ItemCount({ item, stock, onAdd }) {
         <button className="plusminus" onClick={handleRemove}>
           -
         </button>
-        <span>{count}</span>
+        <span>{quantity}</span>
         <button className="plusminus" onClick={handleAdd}>
           +
         </button>
         <br/><br/>
         <button className="btn" onClick={addItem}>
-          {" "}
-          Agregar al carrito{" "}
+          {" "} Agregar al carrito {" "}
         </button>
         <br/><br/>
       </div>

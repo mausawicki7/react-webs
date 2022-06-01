@@ -1,15 +1,16 @@
 import "../styles/ItemDetail.css";
-import { useState, useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import { UseCartContext } from "../context/CartContext";
+import { useState } from "react";
 import BuyButtons from "./BuyButtons";
 import ItemCount from "./ItemCount";
 
+
 function ItemDetail({ item }) {
   const [inputType, setInputType] = useState('itemCount');
-  const cartContext = useContext(CartContext);
+  const { addToCart } = UseCartContext();
 
-  const onAdd = (qty) => {
-    cartContext.addToCart(...item, qty);
+  function onAdd(quantity) {
+    addToCart({...item, quantity});
     setInputType('buyButtons');
   };
 
@@ -41,7 +42,7 @@ function ItemDetail({ item }) {
             <p className="paragraph-area">{item.description}</p>
             
             {inputType === 'itemCount' ?
-            <ItemCount item={item} onAdd={onAdd} /> : 
+            <ItemCount initial={1} stock={item.stock} onAdd={onAdd} /> : 
             <BuyButtons/>}
           </div>
         </div>
