@@ -21,7 +21,7 @@ function Item({ item }) {
           </p>
 
           <NavLink className="btn" to={`/${item.id}`}>
-            Agregar al pedido
+            Ver detalle
           </NavLink>
           <br />
           <br />
