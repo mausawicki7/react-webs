@@ -29,7 +29,10 @@ function ItemListContainer() {
         setLoading(false);
       });
     } else {
-      const queryCollectionFilter = query(queryCollection,where("category", "==", id));
+      const queryCollectionFilter = query(
+        queryCollection,
+        where("category", "==", id)
+      );
       getDocs(queryCollectionFilter)
         .then((resp) =>
           setItems(resp.docs.map((el) => ({ id: el.id, ...el.data() })))
